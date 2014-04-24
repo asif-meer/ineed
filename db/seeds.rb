@@ -12,7 +12,8 @@ roles = ["superadmin"].each do |role|
 end
 
 puts "Creating SuperAdmin..."
-u=User.find_or_create_by(:email=>'sam_sarmad@hotmail.com')
+# u=User.find_or_create_by(:email=>'sam_sarmad@hotmail.com')
+u=User.find_or_create_by(:email=>'asif_meer_2k6@yahoo.com')
 u.password = "please11"
 u.password_confirmation = "please11"
 u.add_role :superadmin
