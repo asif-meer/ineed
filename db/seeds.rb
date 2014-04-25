@@ -29,9 +29,9 @@ require 'roo'
     row[0] = p_main_category_name if  row[0].blank?
     puts "#{row.map{ |r| r.capitalize unless r.nil? }}"
     filtered_row = row.map{ |r| r.capitalize unless r.nil? }
-    main_cat = Category.find_or_create_by :name => "#{row[0]}"
-    main_cat.children.find_or_create_by :name => "#{row[1]}" unless row[1].nil?
-    main_cat.children.find_or_create_by :name => "#{row[2]}" unless row[2].nil?
+    main_cat = Category.find_or_create_by :name => "#{row[0].capitalize}"
+    main_cat.children.find_or_create_by :name => "#{row[1].capitalize}" unless row[1].nil?
+    main_cat.children.find_or_create_by :name => "#{row[2].capitalize}" unless row[2].nil?
   end
   
 # alarm_cat = Category.find_or_create_by(:name => "Alarm")
