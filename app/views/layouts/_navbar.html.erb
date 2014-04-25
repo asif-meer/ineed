@@ -19,7 +19,8 @@
           <% if user_signed_in? %>
             <a href="<%= edit_user_registration_path %>"> <span class="glyphicon glyphicon-th"> Profile</span> </a>
           <% else %>
-            <a href="<%= new_user_registration_path %>"> <span class="glyphicon glyphicon-th"> Register</span> </a>
+            <%= external_nav_link('Patient Sign up', registrations_by_role_path("patient")) %>
+            <%= external_nav_link('Physician Sign up', registrations_by_role_path("physician")) %>
           <% end %>
         </li>
         <% if current_user && current_user.admin? %>

@@ -1,13 +1,17 @@
 Ineed::Application.routes.draw do
-  ActiveAdmin.routes(self)
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "users/registrations"}
+
+  devise_scope :user do
+    get "registrations/:role", to: "users/registrations#new", as: :registrations_by_role
+  end
+
   get "home/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'home#index'
-
+  ActiveAdmin.routes(self)
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

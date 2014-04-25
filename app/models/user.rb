@@ -9,4 +9,17 @@ class User < ActiveRecord::Base
     self.has_role? :superadmin
   end
 
+  def to_s
+    "#{self.first_name}"
+  end
+
+  def fullname
+    "#{self.to_s}"
+  end
+
+  def set_role(role)
+    usr_role = Role::PUBLIC_ROLES.include?(role) ? role : Role::DEFAULT_ROLE
+    self.add_role usr_role
+  end
+
 end
