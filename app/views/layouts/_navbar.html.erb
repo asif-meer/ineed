@@ -19,8 +19,8 @@
           <% if user_signed_in? %>
             <a href="<%= edit_user_registration_path %>"> <span class="glyphicon glyphicon-th"> Profile</span> </a>
           <% else %>
-            <%= external_nav_link('Patient Sign up', registrations_by_role_path("patient")) %>
-            <%= external_nav_link('Physician Sign up', registrations_by_role_path("physician")) %>
+            <%= link_to('User Sign up', registrations_by_role_path("user")) %>
+            <%= link_to('Vendor Sign up', registrations_by_role_path("vendor")) %>
           <% end %>
         </li>
         <% if current_user && current_user.admin? %>

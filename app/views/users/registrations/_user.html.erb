@@ -1,0 +1,76 @@
+<script type="text/javascript">
+  $(document).on("blur","#user_date_of_birth",function(){
+    var currdate = new Date($.now());
+    var datetocheck = new Date();
+    datetocheck.setFullYear(currdate.getFullYear() - 18, currdate.getMonth(), currdate.getDate());
+    //selectedDate.setFullYear(currdate.getFullYear() - 18, month-1, day);
+    if($('#user_date_of_birth').val()!="")
+    {
+      var selectedDate = new Date($('#user_date_of_birth').val());
+      if(selectedDate > datetocheck)
+      {
+        $('.under-18-question').show();
+        console.log(selectedDate);
+        console.log("you are not 18");
+      }
+      else
+      {
+        $('.under-18-question').hide();
+        console.log(selectedDate);
+        console.log("you are 18");
+      }
+      
+    }
+  });
+</script>
+<%= stylesheet_link_tag "datepicker3" %>
+<%# profile "Patient-registration" do %>
+<div class="row">&nbsp;</div>
+ <div class="row">
+  <div class="col-md-6 col-md-offset-2"><h2>User Registration</h2></div>
+</div>
+<div class="row">&nbsp;</div>
+  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), wrapper: :bootstrap3_horizontal, defaults: {right_column_html: {class: "col-sm-6 col-md-6"},
+    label_html: {class: "col-lg-2 col-md-2"} }, :html => { :class => 'form-horizontal'}) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%#= f.input :title, label_html: { class: 'col-md-3' }, input_html: { class: 'form-control' } %>
+      <%#= f.input :first_name, label_html: { class: 'col-md-3' }, input_html: { class: 'form-control' } %>
+      <%= hidden_field_tag "role", "user" %>
+      <%#= hidden_field_tag "current_date", DateTime.now %>
+      <%#= f.input :last_name, label_html: { class: 'col-md-3' }, input_html: { class: 'form-control' } %>
+<!--       <div class="row">
+        <div class="col-md-3">
+          Date of birth
+        </div>
+        <div class="col-md-6">
+          <div class="input-group date">
+            <%#= f.text_field :date_of_birth,as: :text, class: " form-control" %><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- <div class="under-18-question">
+        <div class="row">&nbsp;</div>
+          <div class="row ">
+            <div class="col-md-12">Do you have a parent or legal guardian that can provide electronic consent and payment for SmarterSkin services?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <%#= radio_button_tag :under_age_question, "yes" %>Yes
+              <%#= radio_button_tag :under_age_question, "no" %>No
+            </div>
+          </div>
+        <div class="row">&nbsp;</div>
+      </div> -->
+       <%#= f.input :date_of_birth, label_html: { class: 'col-md-3' }, as: :date, start_year: Date.today.year - 80, end_year: Date.today.year , order: [:day, :month, :year], :prompt => "Select one" %>
+       <%#= f.input :gender, label_html: { class: 'col-md-3' }, :collection => Proc.new{ User::USER_GENDERS.map{ |g| [g.capitalize, g, :class => "gender-rd-btn"] } }, :as => :radio_buttons %>
+      <%= f.input :email, label_html: { class: 'col-md-3' }, :required => true, :autofocus => true, input_html: { class: 'form-control' } %>
+      <%= f.input :password, label_html: { class: 'col-md-3' }, :required => true, input_html: { class: 'form-control' } %>
+      <%= f.input :password_confirmation, label: 'Confirm Password', label_html: { class: 'col-md-3' }, :required => true, input_html: { class: 'form-control' } %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Sign up", :class=>"btn btn-default" %>
+    </div>
+  <% end %>
+  <%= render "users/shared/links" %>
+<%# end %>

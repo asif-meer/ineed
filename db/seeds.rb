@@ -5,12 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-require 'roo'
+  require 'roo'
 
-# puts "Creating Roles..."
-# roles = ["superadmin"].each do |role|
-#   Role.find_or_create_by(:name=>role)
-# end
+  puts "Creating Roles..."
+  roles = ["superadmin","vendor","user"].each do |role|
+    Role.find_or_create_by(:name=>role)
+  end
 
 # puts "Creating SuperAdmin..."
 # # u=User.find_or_create_by(:email=>'sam_sarmad@hotmail.com')
