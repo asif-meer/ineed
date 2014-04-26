@@ -1,10 +1,14 @@
 Ineed::Application.routes.draw do
+  get "vendors/dashboard"
+  get "users/dashboard"
   devise_for :users, :controllers => {:registrations => "users/registrations"}
 
   devise_scope :user do
     get "registrations/:role", to: "users/registrations#new", as: :registrations_by_role
   end
 
+  match 'users/dashboard' => 'users#dashboard', :via => :get, :as => :user_dashboard
+  match 'vendors/dashboard' => 'vendors#dashboard', :via => :get, :as => :vendor_dashboard
   get "home/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

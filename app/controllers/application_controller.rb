@@ -15,4 +15,18 @@ class ApplicationController < ActionController::Base
     logger.debug "Successfully authenticated as admin"
   end
 
+  def after_sign_in_path_for(resource_or_scope)
+    if resource_or_scope.is_a?(User)
+      if resource_or_scope.has_role? "vendor"
+        vendor_dashboard_path
+      elsif resource_or_scope.has_role? "superadmin"
+        admin_dashboard_path
+      else
+        user_dashboard_path
+      end
+    else
+      super
+    end
+  end
+
 end
