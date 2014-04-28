@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require bootstrap
+ *= require chosen
  */
 
 body{background: #eee url(http://subtlepatterns.com/patterns/sativa.png);}
