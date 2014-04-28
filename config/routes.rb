@@ -10,6 +10,8 @@ Ineed::Application.routes.draw do
   match 'users/dashboard' => 'users#dashboard', :via => :get, :as => :user_dashboard
   match 'vendors/dashboard' => 'vendors#dashboard', :via => :get, :as => :vendor_dashboard
   get "home/index"
+
+  resources :products
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

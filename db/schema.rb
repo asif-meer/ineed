@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140425054300) do
+ActiveRecord::Schema.define(version: 20140428115050) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -37,6 +37,22 @@ ActiveRecord::Schema.define(version: 20140425054300) do
   end
 
   add_index "categories", ["ancestry"], name: "index_categories_on_ancestry", using: :btree
+
+  create_table "categorizations", force: true do |t|
+    t.integer  "category_id"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.decimal  "price",       precision: 10, scale: 0
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "roles", force: true do |t|
     t.string   "name"
