@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
     self.has_role? :superadmin
   end
 
+  def vendor?
+    self.has_role? :vendor
+  end
+
   def to_s
     "#{self.first_name}"
   end

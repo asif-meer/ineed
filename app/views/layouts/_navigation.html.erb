@@ -22,6 +22,12 @@
           <li><%= link_to('Vendor Sign up', registrations_by_role_path("vendor")) %></li>
           <% end %>
         
+        <% if current_user && current_user.vendor?  %>
+          <li>
+            <%= link_to 'My Products', vendors_products_path %>
+          </li>
+        <% end %>
+
         <% if current_user && current_user.admin? %>
           <li>
             <%= link_to 'Admin', admin_dashboard_path %>

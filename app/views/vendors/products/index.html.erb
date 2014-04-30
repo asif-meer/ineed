@@ -1,29 +1,39 @@
-<h1>Listing products</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.description %></td>
-        <td><%= product.price %></td>
-        <td><%= product.categories %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Product', new_product_path %>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-10 col-md-offset-1">
+        <%= link_to 'New Product', new_vendors_product_path %>
+        <h1>Listing products</h1>
+          <table class="table table-hover">
+              <thead>
+                  <tr>
+                      <th>Products with Description</th>
+                      <th class="text-center">Price</th>
+                      <th> </th>
+                  </tr>
+              </thead>
+              <tbody>
+                <% @products.each do |product| %>
+                  <tr>
+                      <td class="col-sm-8 col-md-6">
+                      <div class="media">
+                          <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
+                          <div class="media-body">
+                              <h4 class="media-heading"><%= link_to product.name, "#" %></h4>
+                              <span>Description: </span><span class="text-success"><strong><%=  product.description %></strong></span>
+                              <br>
+                              <span>Categories: </span><span ><strong><%=  product.added_categories %></strong></span>
+                          </div>
+                      </div></td>
+                      <td class="col-sm-1 col-md-1 text-center"><strong><%=  product.price %></strong></td>
+                      <td class="col-sm-1 col-md-1">
+                        <%= link_to 'Edit', edit_vendors_product_path(product) %>
+                        <%= link_to 'Show', vendors_product_path(product) %>
+                        <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+                      </td>
+                  </tr>
+                <% end %>
+              </tbody>
+          </table>
+      </div>
+    </div>
+</div>

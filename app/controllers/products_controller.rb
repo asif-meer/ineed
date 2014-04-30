@@ -4,6 +4,10 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
+    if current_user.vendor?
+      flash.keep
+      redirect_to vendors_products_path
+    end
     @products = current_user.products
   end
 

@@ -9,16 +9,18 @@
     </ul>
   </div>
 <% end %>
-<%= simple_form_for(@product,html: {class: 'form-horizontal' }) do |f| %>
+<%= simple_form_for([:vendors,@product],html: {class: 'form-horizontal' }) do |f| %>
   <div class="form-inputs">
     <%= f.input :name, input_html: { class: 'form-control' } %>
     <%= f.input :description, input_html: { class: 'form-control' } %>
     <%= f.input :price, input_html: { class: 'form-control' } %>
-    <%= f.association :categories,input_html: { class: 'form-control chosen-select' } %>
+    <%= f.association :categories, collection: Category.viewable_categories.all(order: 'name'), prompt: "Choose some categories",input_html: { class: 'form-control chosen-select' } %>
+    <%#= f.association :categories,input_html: { class: 'form-control chosen-select' } %>
   </div>
 
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.button :submit %>
+    <%#= f.button :next %>
   </div>
 <% end %>
