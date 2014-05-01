@@ -5,4 +5,8 @@ class Category < ActiveRecord::Base
   def self.viewable_categories
     where.not(:name => "products")
   end
+
+  def to_s
+    "#{self.name}"
+  end
 end

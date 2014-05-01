@@ -6,4 +6,8 @@ class Product < ActiveRecord::Base
   def added_categories
     self.categories.map(&:name).join(",")
   end
+
+  def to_s
+    "#{self.name}"
+  end
 end

@@ -1,4 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <p id="notice"><%= notice %></p>
+      <div class="offer offer-default">
+        <div class="shape">
+          <div class="shape-text">
+            Info
+          </div>
+        </div>
+        <div class="offer-content">
+          <h3 class="lead">
+            <%= @product.name %>
+          </h3>
+          <p>
+            <%= @product.description %>
+            <br> and so one
+          </p>
+          <p><strong>Categories:</strong> <%= @product.added_categories %></p>
+          <p><strong>Price:</strong> <%= @product.price %></p>
+          <br>
+          <p>
+            <%= link_to 'Edit', edit_vendors_product_path(@product) %> |
+            <%= link_to 'Back', vendors_products_path %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<%= stylesheet_link_tag "vendors/products.css" %>
