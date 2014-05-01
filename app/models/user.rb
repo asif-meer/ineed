@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   end
 
   def to_s
-    "#{self.first_name}"
+    "#{self.email}"
   end
 
   def fullname

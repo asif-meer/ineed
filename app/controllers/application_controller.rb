@@ -15,6 +15,18 @@ class ApplicationController < ActionController::Base
     logger.debug "Successfully authenticated as admin"
   end
 
+
+  def authenticate_vendor!
+    logger.debug "In authenticate vendor"
+    authenticate_user!
+    unless current_user.vendor?
+      logger.error "This area is restricted to vendor only."
+      flash[:alert] = "This area is restricted to vendors only."
+      redirect_to root_path 
+    end
+    logger.debug "Successfully authenticated as vendor"
+  end
+
   def after_sign_in_path_for(resource_or_scope)
     if resource_or_scope.is_a?(User)
       if resource_or_scope.has_role? "vendor"
